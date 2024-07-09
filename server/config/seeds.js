@@ -8,145 +8,206 @@ db.once('open', async () => {
   await cleanDB('User', 'users');
 
   const categories = await Category.insertMany([
-    { name: 'Food' },
-    { name: 'Household Supplies' },
-    { name: 'Electronics' },
-    { name: 'Books' },
-    { name: 'Toys' },
+    { name: 'Whole Beans' },
+    { name: 'Tea' },
+    { name: 'Pods' },
+    { name: 'Instant' },
+    { name: 'Accessories' },
   ]);
 
   console.log('categories seeded');
 
   const products = await Product.insertMany([
     {
-      name: 'Tin of Cookies',
-      description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+      name: 'Premium Roast Coffee Beans',
+      description: 'Freshly roasted coffee beans from exotic origins.',
+      image: 'premium-coffee.jpg',
       category: categories[0]._id,
-      price: 2.99,
-      quantity: 500,
+      price: 9.99,
+      quantity: 200,
     },
     {
-      name: 'Canned Coffee',
-      description:
-        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
+      name: 'Espresso Blend Coffee',
+      description: 'Intense and aromatic espresso blend ground coffee.',
+      image: 'espresso-blend.jpg',
       category: categories[0]._id,
-      price: 1.99,
-      quantity: 500,
+      price: 12.99,
+      quantity: 150,
     },
     {
-      name: 'Toilet Paper',
+      name: 'Coffee Sampler Pack',
+      description: 'Discover a variety of coffee flavors in this sampler pack.',
+      image: 'coffee-sampler.jpg',
+      category: categories[0]._id,
+      price: 19.99,
+      quantity: 100,
+    },
+    {
+      name: 'Ceremonial Grade Matcha Powder',
+      description: 'High-quality ceremonial grade matcha powder for traditional tea ceremonies.',
+      image: 'ceremonial-matcha.jpg',
       category: categories[1]._id,
-      description:
-        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-      image: 'toilet-paper.jpg',
+      price: 14.99,
+      quantity: 300,
+    },
+    {
+      name: 'Ceremonial Grade Hojicha Powder',
+      description: 'High-quality ceremonial grade Hojicha powder for traditional tea ceremonies.',
+      image: 'ceremonial-matcha.jpg',
+      category: categories[1]._id,
+      price: 14.99,
+      quantity: 300,
+    },
+    {
+      name: 'Matcha Latte Mix',
+      description: 'Smooth and creamy matcha latte mix, perfect for making at home.',
+      image: 'matcha-latte-mix.jpg',
+      category: categories[1]._id,
       price: 7.99,
-      quantity: 20,
+      quantity: 250,
     },
     {
-      name: 'Handmade Soap',
+      name: 'Hojicha Latte Mix',
+      description: 'Smooth and creamy hojicha latte mix, perfect for making at home.',
+      image: 'matcha-latte-mix.jpg',
       category: categories[1]._id,
-      description:
-        'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
-      image: 'soap.jpg',
-      price: 3.99,
+      price: 7.99,
+      quantity: 250,
+    },
+    {
+      name: 'Insulated Travel Coffee Tumbler',
+      description: 'Double-walled insulated tumbler to keep your coffee hot on the go.',
+      image: 'travel-coffee-tumbler.jpg',
+      category: categories[4]._id,
+      price: 19.99,
+      quantity: 100,
+    },
+    {
+      name: 'Set of 4 Ceramic Coffee Mugs',
+      description: 'Elegant ceramic coffee mugs, perfect for daily use or gifting.',
+      image: 'coffee-mug-set.jpg',
+      category: categories[4]._id,
+      price: 29.99,
       quantity: 50,
     },
     {
-      name: 'Set of Wooden Spoons',
-      category: categories[1]._id,
-      description:
-        'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Duis dignissim nisi vel tortor imperdiet finibus. Aenean aliquam sagittis rutrum.',
-      image: 'wooden-spoons.jpg',
-      price: 14.99,
-      quantity: 100,
+      name: 'Coffee Grinder',
+      description: 'Electric grinder with adjustable settings for different grind sizes',
+      image: '',
+      category: categories[4]._id,
+      price: 50.00,
+      quantity: 15,
     },
     {
-      name: 'Camera',
-      category: categories[2]._id,
-      description:
-        'Vestibulum risus metus, luctus non tortor quis, tincidunt consectetur ex. Nullam vitae lobortis ligula, ut sagittis massa. Curabitur consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
-      image: 'camera.jpg',
-      price: 399.99,
-      quantity: 30,
-    },
-    {
-      name: 'Tablet',
-      category: categories[2]._id,
-      description:
-        'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
-      image: 'tablet.jpg',
-      price: 199.99,
-      quantity: 30,
-    },
-    {
-      name: 'Tales at Bedtime',
+      name: 'Instant Coffee Mix',
+      description: 'Create a delicious coffee frappe instantly with this easy-to-use mix.',
+      image: 'coffee-frappe-mix.jpg',
       category: categories[3]._id,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
-      image: 'bedtime-book.jpg',
       price: 9.99,
-      quantity: 100,
+      quantity: 120,
     },
     {
-      name: 'Spinning Top',
-      category: categories[4]._id,
-      description:
-        'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
-      image: 'spinning-top.jpg',
-      price: 1.99,
-      quantity: 1000,
-    },
-    {
-      name: 'Set of Plastic Horses',
-      category: categories[4]._id,
-      description:
-        'Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.',
-      image: 'plastic-horses.jpg',
-      price: 2.99,
-      quantity: 1000,
-    },
-    {
-      name: 'Teddy Bear',
-      category: categories[4]._id,
-      description:
-        'Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.',
-      image: 'teddy-bear.jpg',
-      price: 7.99,
-      quantity: 100,
-    },
-    {
-      name: 'Alphabet Blocks',
-      category: categories[4]._id,
-      description:
-        'Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.',
-      image: 'alphabet-blocks.jpg',
+      name: 'Instant Espresso Mix',
+      description: 'Create a delicious coffee frappe instantly with this easy-to-use mix.',
+      image: 'coffee-frappe-mix.jpg',
+      category: categories[3]._id,
       price: 9.99,
-      quantity: 600,
+      quantity: 120,
     },
+    {
+      name: 'Instant Matcha Latte Mix',
+      description: 'Create a delicious coffee frappe instantly with this easy-to-use mix.',
+      image: 'coffee-frappe-mix.jpg',
+      category: categories[3]._id,
+      price: 9.99,
+      quantity: 120,
+    },
+    {
+      name: 'Instant Hojicha Latte Mix',
+      description: 'Create a delicious coffee frappe instantly with this easy-to-use mix.',
+      image: 'coffee-frappe-mix.jpg',
+      category: categories[3]._id,
+      price: 9.99,
+      quantity: 120,
+    },
+    {
+      name: 'Espresso Pods',
+      Description: 'Single-serve espresso pods compatible with most machines',
+      image: 'coffee-sampler.jpg',
+      Category: categories[2]._id,
+      Price: 10.00,
+      Quantity: 100,
+    },
+    {
+      name: 'Breakfast Blend Pods',
+      Description: 'Light roast pods with a smooth, mild flavor',
+      image: 'coffee-sampler.jpg',
+      Category: categories[2]._id,
+      Price: 9.00,
+      Quantity: 80,
+    },
+    {
+      name: 'French Vanilla Pods',
+      Description: 'Flavored pods with a sweet, creamy vanilla taste.',
+      image: 'coffee-sampler.jpg',
+      Category: categories[2]._id,
+      Price: 10.00,
+      Quantity: 60,
+    },
+    {
+      name: 'Decaf Coffee Pods',
+      Description: 'Decaffeinated pods with a rich, full flavor.',
+      image: 'coffee-sampler.jpg',
+      Category: categories[2]._id,
+      Price: 11.00,
+      Quantity: 70,
+    },
+    {
+      name: 'Hazelnut Pods',
+      Description: 'Nutty and aromatic flavored coffee pods',
+      image: 'coffee-sampler.jpg',
+      Category: categories[2]._id,
+      Price: 12.00,
+      Quantity: 75,
+    }
   ]);
 
   console.log('products seeded');
 
   await User.create({
-    firstName: 'Pamela',
-    lastName: 'Washington',
-    email: 'pamela@testmail.com',
+    firstName: 'Adjoa',
+    lastName: 'Hackman',
+    email: 'adjoa@testmail.com',
     password: 'password12345',
     orders: [
       {
-        products: [products[0]._id, products[0]._id, products[1]._id],
+        products: [products[0]._id, products[3]._id, products[8]._id],
       },
     ],
   });
 
   await User.create({
-    firstName: 'Elijah',
-    lastName: 'Holt',
-    email: 'eholt@testmail.com',
+    firstName: 'Nicole',
+    lastName: 'Kim',
+    email: 'nkim@testmail.com',
     password: 'password12345',
+    orders: [
+      {
+        products: [products[1]._id, products[4]._id, products[9]._id],
+      },
+    ],
+  });
+
+  await User.create({
+    firstName: 'Tal',
+    lastName: 'BenDavid',
+    email: 'tbd@testmail.com',
+    password: 'password12345',
+    orders: [
+      {
+        products: [products[2]._id, products[5]._id, products[10]._id],
+      },
+    ],
   });
 
   console.log('users seeded');
