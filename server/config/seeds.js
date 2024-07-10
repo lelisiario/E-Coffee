@@ -3,9 +3,10 @@ const { User, Product, Category } = require('../models');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
-  await cleanDB('Category', 'categories');
-  await cleanDB('Product', 'products');
-  await cleanDB('User', 'users');
+  // await cleanDB('Category', 'categories');
+  await Category.deleteMany({});
+  await Product.deleteMany({});
+  await User.deleteMany({});
 
   const categories = await Category.insertMany([
     { name: 'Whole Beans' },
@@ -132,43 +133,43 @@ db.once('open', async () => {
     },
     {
       name: 'Espresso Pods',
-      Description: 'Single-serve espresso pods compatible with most machines',
+      description: 'Single-serve espresso pods compatible with most machines',
       image: 'coffee-sampler.jpg',
-      Category: categories[2]._id,
-      Price: 10.00,
-      Quantity: 100,
+      category: categories[2]._id,
+      price: 10.00,
+      quantity: 100,
     },
     {
       name: 'Breakfast Blend Pods',
-      Description: 'Light roast pods with a smooth, mild flavor',
+      description: 'Light roast pods with a smooth, mild flavor',
       image: 'coffee-sampler.jpg',
-      Category: categories[2]._id,
-      Price: 9.00,
-      Quantity: 80,
+      category: categories[2]._id,
+      price: 9.00,
+      quantity: 80,
     },
     {
       name: 'French Vanilla Pods',
-      Description: 'Flavored pods with a sweet, creamy vanilla taste.',
+      description: 'Flavored pods with a sweet, creamy vanilla taste.',
       image: 'coffee-sampler.jpg',
-      Category: categories[2]._id,
-      Price: 10.00,
-      Quantity: 60,
+      category: categories[2]._id,
+      price: 10.00,
+      quantity: 60,
     },
     {
       name: 'Decaf Coffee Pods',
-      Description: 'Decaffeinated pods with a rich, full flavor.',
+      description: 'Decaffeinated pods with a rich, full flavor.',
       image: 'coffee-sampler.jpg',
-      Category: categories[2]._id,
-      Price: 11.00,
-      Quantity: 70,
+      category: categories[2]._id,
+      price: 11.00,
+      quantity: 70,
     },
     {
       name: 'Hazelnut Pods',
-      Description: 'Nutty and aromatic flavored coffee pods',
+      description: 'Nutty and aromatic flavored coffee pods',
       image: 'coffee-sampler.jpg',
-      Category: categories[2]._id,
-      Price: 12.00,
-      Quantity: 75,
+      category: categories[2]._id,
+      price: 12.00,
+      quantity: 75,
     }
   ]);
 
