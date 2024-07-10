@@ -92,12 +92,14 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
+        console.log("User not found");
         throw AuthenticationError;
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
+        console.log("Incorrect Password");
         throw AuthenticationError;
       }
 
