@@ -5,7 +5,7 @@ import ProductItem from '../ProductItem';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
 import { QUERY_PRODUCTS } from '../../utils/queries';
-import spinner from '../../assets/spinner.gif';
+import coffee_loader from '../../assets/coffee_loading.gif';
 
 function ProductList() {
   const {products, setProducts, activeCategory} = useStoreContext();
@@ -49,7 +49,7 @@ function ProductList() {
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}
-      {loading ? <img src={spinner} alt="loading" /> : null}
+      {loading ? <img src={coffee_loader} alt="loading" /> : null}
     </div>
   );
 }
