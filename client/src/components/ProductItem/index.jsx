@@ -2,17 +2,16 @@ import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers";
 import { useStoreContext } from '../../utils/GlobalState';
 
-function ProductItem(item) {
-  const {
+function ProductItem({image, name, _id, quantity, price}) {
+  const item = {
     image,
     name,
     _id,
     price,
     quantity
-  } = item;
+  };
 
   const { addItem } = useStoreContext();
-
   const handleClick = (item) => {
     addItem(item)
   };

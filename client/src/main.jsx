@@ -8,7 +8,8 @@ import Detail from './pages/Detail';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import OrderHistory from './pages/OrderHistory'
+import OrderHistory from './pages/OrderHistory';
+import Cart from './pages/Cart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,18 +20,26 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-      }, {
+      }, 
+      {
         path: '/login',
         element: <Login />
-      }, {
+      }, 
+      {
         path: '/signup',
         element: <Signup />
-      }, {
+      }, 
+      {
         path: '/orderHistory',
         element: <OrderHistory />
-      }, {
+      }, 
+      {
         path: '/products/:id',
         element: <Detail />
+      },
+      {
+        path: '/cart',
+        element: <Cart />
       }
     ]
   }
