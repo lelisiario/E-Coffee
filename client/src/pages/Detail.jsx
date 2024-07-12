@@ -5,28 +5,25 @@ import { useQuery } from '@apollo/client';
 import { useStoreContext } from '../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../utils/actions';
 import { QUERY_PRODUCTS } from '../utils/queries';
-import spinner from '../assets/spinner.gif';
+import coffee_loader from '../assets/coffee_loading.gif';
 
 function Detail() {
-  const [state, dispatch] = useStoreContext();
+  const { addItem, cart, setCart, removeItem, products } = useStoreContext();
   const { id } = useParams();
 
   const [currentProduct, setCurrentProduct] = useState({});
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const { products } = state;
 
   useEffect(() => {
     if (products.length) {
       setCurrentProduct(products.find((product) => product._id === id));
     } else if (data) {
-      dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
-      });
+      addItem(data.products);
+      removeItem(data.products);
     }
-  }, [products, data, dispatch, id]);
+  }, [products, data, id]);
 
   return (
     <>
@@ -50,7 +47,7 @@ function Detail() {
           />
         </div>
       ) : null}
-      {loading ? <img src={spinner} alt="loading" /> : null}
+      {loading ? <img src={coffee_loader} alt="loading" /> : null}
     </>
   );
 }

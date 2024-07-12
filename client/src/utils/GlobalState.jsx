@@ -1,8 +1,6 @@
-import { createContext, useContext, useState, useEffect} from "react";
-import createID from './createID';
+import { createContext, useContext, useState, useEffect } from "react";
 
 const StoreContext = createContext();
-const { Provider } = StoreContext;
 
 export const useStoreContext = () => useContext(StoreContext);
 
@@ -20,14 +18,14 @@ const StoreProvider = ({ children }) => {
 
     // const id = createID(cart);
 
-    // const newProduct = {...product, id};
+    const newProduct = { ...product, quantity: 1 };
 
-    setCart([...cart, product]);
+    setCart([...cart, newProduct]);
   };
 
   const removeItem = (id) => {
     const newCartList = cart.filter((product) => product.id !== id);
-    
+
     setCart(newCartList);
   };
 
@@ -39,7 +37,7 @@ const StoreProvider = ({ children }) => {
   // });
   useEffect(() => {
     console.log("cart: ", cart);
-  },[cart])
+  }, [cart])
   return (
     <StoreContext.Provider value={{ cart, setCart, addItem, removeItem, products, setProducts, categories, setCategories, activeCategory, setActiveCategory }}>{children}</StoreContext.Provider>
   )
