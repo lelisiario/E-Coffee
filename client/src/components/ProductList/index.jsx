@@ -8,35 +8,32 @@ import { QUERY_PRODUCTS } from '../../utils/queries';
 import spinner from '../../assets/spinner.gif';
 
 function ProductList() {
-  const [state, dispatch] = useStoreContext();
+  const {products, setProducts, activeCategory} = useStoreContext();
 
-  const { currentCategory } = state;
+  // const { currentCategory } = state;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   useEffect(() => {
     if (data) {
-      dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
-      });
+      setProducts(data.products)
     }
-  }, [data, dispatch]);
+  }, [data]);
 
   function filterProducts() {
-    if (!currentCategory) {
-      return state.products;
+    if (!activeCategory) {
+      return products;
     }
 
-    return state.products.filter(
-      (product) => product.category._id === currentCategory
+    return products.filter(
+      (product) => product.category._id === activeCategory
     );
   }
 
   return (
     <div className="my-2">
       <h2>Our Products:</h2>
-      {state.products.length ? (
+      {products.length ? (
         <div className="flex-row">
           {filterProducts().map((product) => (
             <ProductItem
