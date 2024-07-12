@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import {useStoreContext} from '../utils/GlobalState';
 
 const ShoppingCart = () => {
@@ -13,49 +13,54 @@ const ShoppingCart = () => {
 
     // Handle adding a product to the cart
     const handleAddProduct = (product) => {
-        setCartItems((prevItems) => {
-            const existingItem = prevItems.find((item) => product.id === product._id);
+        setCart((prevItems) => {
+            console.log(prevItems)
+            console.log(product)
+            const existingItem = prevItems.find((item) => product._id === item._id);
             if (existingItem) {
                 return prevItems.map((item) =>
-                    item.id === product._id ? { ...product, quantity: product.quantity + 1 } : item
+                    item._id === product._id ? { ...product, quantity: item.quantity + 1 } : item
                 );
             } else {
-                return [...prevProducts, { ...product, quantity: 1 }];
+                return [...prevItems, { ...product, quantity: 1 }];
             }
         });
     }
 
-    const handleRemoveProduct = (productId) => {
-        setCartItems((prevItems) => {
-            const existingItem = prevItems.find((item) => item.id === productId);
-            if (existingItem.quantity > 1) {
+    const handleRemoveProduct = (product) => {
+        setCart((prevItems) => {
+            const existingItem = prevItems.find((item) => product._id === item._id);
+            if (existingItem?.quantity > 1) {
                 return prevItems.map((item) =>
-                    item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+                    item._id === product._id ? { ...item, quantity: item.quantity - 1 } : item
                 );
             } else {
-                return prevItems.filter((item) => item.id !== productId);
+                return prevItems.filter((item) => item._id !== product._id);
             }
         });
+
+
+
     };
     return (
         <div className="shopping-cart">
-            <h2>Shopping Cart</h2>
+            <h2>Coffee Cart</h2>
             {cart.length === 0 ? (
-                <p>Your cart is empty</p>
+                <p>Your cart is decaffeinated!</p>
             ) : (
                 <ul>
                     {cart.map((item) => (
                         <li key={item._id}>
                             <span>{item.name}</span>
                             <span>${item.price}</span>
-                            <span>Quantity: {item.quantity}</span>
+                            <span> Quantity: {item.quantity}</span>
                             <button onClick={() => handleAddProduct(item)}>+</button>
-                            <button onClick={() => handleRemoveProduct(item._id)}>-</button>
+                            <button onClick={() => handleRemoveProduct(item)}>-</button>
                         </li>
                     ))}
                 </ul>
             )}
-            <h3>Total: ${calculateTotalPrice()}</h3>
+            <h3>Sub-Total: ${calculateTotalPrice()}</h3>
         </div>
     );
 };

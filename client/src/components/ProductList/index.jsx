@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/client';
 
 import ProductItem from '../ProductItem';
 import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_PRODUCTS } from '../../utils/actions';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import coffee_loader from '../../assets/coffee_loading.gif';
 

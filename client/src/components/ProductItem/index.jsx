@@ -26,7 +26,7 @@ function ProductItem({image, name, _id, quantity, price}) {
         <p>{name}</p>
       </Link>
       <div>
-        <div>{quantity} {pluralize("item", quantity)} in stock</div>
+        <div>{quantity} {pluralize("item", item.quantity)} in stock</div>
         <span>${price}</span>
       </div>
       <button onClick={() => {
