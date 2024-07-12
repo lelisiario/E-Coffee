@@ -1,4 +1,4 @@
-# kittE-commerce
+# E-coffee
 
 ## Description
 A coffee ecommerce website built on a MERN stack.
