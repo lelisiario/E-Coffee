@@ -8,26 +8,18 @@ import {
 import { QUERY_CATEGORIES } from '../../utils/queries';
 
 function CategoryMenu() {
-  const [state, dispatch] = useStoreContext();
-
-  const { categories } = state;
+  const { categories, setCategories, setActiveCategory } = useStoreContext();
 
   const { data: categoryData } = useQuery(QUERY_CATEGORIES);
 
   useEffect(() => {
     if (categoryData) {
-      dispatch({
-        type: UPDATE_CATEGORIES,
-        categories: categoryData.categories,
-      });
+      setCategories(categoryData.categories)
     }
-  }, [categoryData, dispatch]);
+  }, [categoryData]);
 
   const handleClick = (id) => {
-    dispatch({
-      type: UPDATE_CURRENT_CATEGORY,
-      currentCategory: id,
-    });
+    setActiveCategory(id)
   };
 
   return (
