@@ -1,9 +1,9 @@
-
-import {useStoreContext} from '../utils/GlobalState';
+import { useNavigate } from 'react-router-dom';
+import { useStoreContext } from '../utils/GlobalState';
 
 const ShoppingCart = () => {
-    const { cart, setCart } = useStoreContext();
-
+    const { cart, setCart, emptyCart } = useStoreContext();
+    const navigate = useNavigate();
 
 
     // Calculate the total price of items in the cart
@@ -39,6 +39,13 @@ const ShoppingCart = () => {
             }
         });
 
+    // const checkoutItem = (item) => {
+    //     setCart('')
+
+
+    //     }
+    // }
+
 
 
     };
@@ -61,6 +68,13 @@ const ShoppingCart = () => {
                 </ul>
             )}
             <h3>Sub-Total: ${calculateTotalPrice()}</h3>
+            <button onClick={() => {
+                alert('Thank you for your purchase!')
+                setTimeout(() => {
+                    navigate('/');
+                    emptyCart();
+                }, 1000);
+            }}>Checkout</button>
         </div>
     );
 };

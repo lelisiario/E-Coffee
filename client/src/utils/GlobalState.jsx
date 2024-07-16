@@ -11,6 +11,10 @@ const StoreProvider = ({ children }) => {
 
   const [categories, setCategories] = useState([]);
 
+  const emptyCart = () => {
+    setCart([])
+  };
+
   const addItem = (product) => {
     if (!product.name) {
       return;
@@ -53,7 +57,7 @@ const StoreProvider = ({ children }) => {
     console.log("cart: ", cart);
   }, [cart])
   return (
-    <StoreContext.Provider value={{ cart, setCart, addItem, removeItem, products, setProducts, categories, setCategories, activeCategory, setActiveCategory }}>{children}</StoreContext.Provider>
+    <StoreContext.Provider value={{ cart, emptyCart, setCart, addItem, removeItem, products, setProducts, categories, setCategories, activeCategory, setActiveCategory }}>{children}</StoreContext.Provider>
   )
 };
 
