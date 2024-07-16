@@ -30,7 +30,7 @@ const StoreProvider = ({ children }) => {
     });
   };
 
-  const removeItem = (id) => {
+  const removeItem = (product) => {
     setCart((prevItems) => {
       const existingItem = prevItems.find((item) => product._id === item._id);
       if (existingItem?.quantity > 1) {

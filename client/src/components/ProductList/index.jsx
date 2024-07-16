@@ -46,7 +46,7 @@ function ProductList() {
           ))}
         </div>
       ) : (
-        <h3>You haven't added any products yet!</h3>
+        <h3>You have not added any products yet!</h3>
       )}
       {loading ? <img src={coffee_loader} alt="loading" /> : null}
     </div>
