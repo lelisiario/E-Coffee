@@ -7,12 +7,7 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
-            </Link>
-          </li>
+        <ul className="flex-row"> 
           <li className="mx-1">
             <Link to="/cart">
               Cart
