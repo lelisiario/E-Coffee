@@ -1,5 +1,6 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import e_coffee from "../../assets/e-coffee.png";
 
 function Nav() {
 
@@ -48,8 +49,8 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag">☕</span>
-          E-Coffee
+        <img src={e_coffee} alt="e-coffee logo" style={{ width: '40px', height: '40px' }} />
+          -Coffee
         </Link>
       </h1>
 
