@@ -16,17 +16,31 @@ const StoreProvider = ({ children }) => {
       return;
     }
 
-    // const id = createID(cart);
-
-    const newProduct = { ...product, quantity: 1 };
-
-    setCart([...cart, newProduct]);
+    setCart((prevItems) => {
+      console.log(prevItems)
+      console.log(product)
+      const existingItem = prevItems.find((item) => product._id === item._id);
+      if (existingItem) {
+          return prevItems.map((item) =>
+              item._id === product._id ? { ...product, quantity: item.quantity + 1 } : item
+          );
+      } else {
+          return [...prevItems, { ...product, quantity: 1 }];
+      }
+    });
   };
 
   const removeItem = (id) => {
-    const newCartList = cart.filter((product) => product.id !== id);
-
-    setCart(newCartList);
+    setCart((prevItems) => {
+      const existingItem = prevItems.find((item) => product._id === item._id);
+      if (existingItem?.quantity > 1) {
+          return prevItems.map((item) =>
+              item._id === product._id ? { ...item, quantity: item.quantity - 1 } : item
+          );
+      } else {
+          return prevItems.filter((item) => item._id !== product._id);
+      }
+    })
   };
 
   const [activeCategory, setActiveCategory] = useState(null)
