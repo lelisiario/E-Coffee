@@ -7,6 +7,7 @@
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
+  --dark-gray: #575859;
 }
 
 * {
@@ -25,7 +26,10 @@ body {
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
-  color: var(--dark);
+  color: var(--light);
+  background-color: var(--dark-gray);
+  background-size: 2000px;
+  
 }
 
 h1,
@@ -70,7 +74,7 @@ p {
 }
 
 a {
-  color: var(--tertiary);
+  color: var(--light);
   text-decoration: none;
   font-weight: bold;
 }
