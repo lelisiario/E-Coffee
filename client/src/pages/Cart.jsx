@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useStoreContext } from '../utils/GlobalState';
+import '../cart.css'
 
 const ShoppingCart = () => {
     const { cart, setCart, emptyCart } = useStoreContext();
@@ -52,28 +53,45 @@ const ShoppingCart = () => {
     return (
         <div className="shopping-cart">
             <h2>Coffee Cart</h2>
+
             {cart.length === 0 ? (
                 <p>Your cart is decaffeinated!</p>
             ) : (
                 <ul>
                     {cart.map((item) => (
                         <li key={item._id}>
-                            <span>{item.name}</span>
-                            <span>${item.price}</span>
-                            <span> Quantity: {item.quantity}</span>
-                            <button onClick={() => handleAddProduct(item)}>+</button>
-                            <button onClick={() => handleRemoveProduct(item)}>-</button>
+                            <span className='item-name'>{item.name}</span>
+                            <div className='item-price'>
+                                <span>${item.price}</span>
+                            </div>
+                            
+                            <div className='item-quantity'>
+                                <span> Quantity: {item.quantity}</span>
+                                <button onClick={() => handleAddProduct(item)}>+</button>
+                                <button onClick={() => handleRemoveProduct(item)}>-</button>
+                            </div>
+                            
                         </li>
                     ))}
                 </ul>
             )}
+            <hr />
             <h3>Sub-Total: ${calculateTotalPrice()}</h3>
-            <button onClick={() => {
-                alert('Thank you for your purchase!')
-                setTimeout(() => {
-                    navigate('/');
-                    emptyCart();
-                }, 1000);
+            <button 
+                className='checkout-button'
+                onClick={() => {
+                    if(cart.length === 0) {
+                        alert('Cart is empty. Please add items to check out.');
+                        setTimeout(() => {
+                            navigate('/');
+                        }, 1000);
+                    } else {
+                        alert('Thank you for your purchase!')
+                        setTimeout(() => {
+                            navigate('/');
+                            emptyCart();
+                        }, 1000);
+                    }
             }}>Checkout</button>
         </div>
     );
