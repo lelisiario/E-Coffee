@@ -5,7 +5,7 @@ A coffee e-commerce website built on a MERN stack. We created a site that sells 
 
 [View our e-commerce site!](https://e-coffee-7d6cb3a5dc4c.herokuapp.com/)
 
-![E-Coffee](../E-Coffee/client/src/assets/E-Coffee%20-%20Deployed%20Screenshot.png)
+![E-Coffee](../E-Coffee/client/src/assets/E-Coffee - Deployed Screenshot.png)
 
 ## Table of Contents
 
